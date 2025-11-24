@@ -1,5 +1,6 @@
 import './App.css';
 import Header from './components/Header/Header';
+import KanbanBoard from './components/KanbanBoard/KanbanBoard';
 import SideBar from './components/SideBar/SideBar';
 
 function App() {
@@ -12,6 +13,8 @@ function App() {
         <main className="flex-1 flex flex-col min-h-0">
           {/* Header */}
           <Header />
+          {/* Kanban Board */}
+          <KanbanBoard />
         </main>
       </div>
     </>
