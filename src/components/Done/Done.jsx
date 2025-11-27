@@ -19,7 +19,7 @@ export default function Done() {
               {done.length}
             </span>
           </div>
-          <FilterAndSort />
+          <FilterAndSort tag={done} />
         </div>
         <div className="space-y-4 flex-1 overflow-visible lg:overflow-y-auto">
           {done.map((task) => (

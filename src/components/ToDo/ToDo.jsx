@@ -21,7 +21,7 @@ export default function ToDo() {
             </span>
           </div>
 
-          <FilterAndSort />
+          <FilterAndSort tag={todo} />
         </div>
 
         <div className="space-y-4 flex-1 overflow-visible lg:overflow-y-auto">

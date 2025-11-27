@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 
-export default function FilterAndSort() {
+export default function FilterAndSort({ tag }) {
+  console.log('Tags in FilterAndSort:', tag);
   const filterBtn = useRef(null);
   const sortBtn = useRef(null);
 
@@ -58,24 +59,16 @@ export default function FilterAndSort() {
             <p className="px-4 pb-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">
               Filter by tag
             </p>
-            <button
-              type="button"
-              className="w-full text-left px-4 py-2 hover:bg-gray-50"
-            >
-              Design
-            </button>
-            <button
-              type="button"
-              className="w-full text-left px-4 py-2 hover:bg-gray-50"
-            >
-              Operations
-            </button>
-            <button
-              type="button"
-              className="w-full text-left px-4 py-2 hover:bg-gray-50"
-            >
-              Marketing
-            </button>
+            {tag?.length > 0 &&
+              tag.map((t) => (
+                <button
+                  key={t.id}
+                  type="button"
+                  className="w-full text-left px-4 py-2 hover:bg-gray-50"
+                >
+                  {t.tag}
+                </button>
+              ))}
           </div>
         </div>
 

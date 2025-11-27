@@ -18,7 +18,7 @@ export default function InProgress() {
               {inProgress.length}
             </span>
           </div>
-          <FilterAndSort />
+          <FilterAndSort tag={inProgress} />
         </div>
         <div className="space-y-4 flex-1 overflow-visible lg:overflow-y-auto">
           {inProgress.map((task) => (
