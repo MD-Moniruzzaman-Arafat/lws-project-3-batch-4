@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 
-export default function FilterAndSort({ tag }) {
+export default function FilterAndSort({ tag, setFilter }) {
   console.log('Tags in FilterAndSort:', tag);
   const filterBtn = useRef(null);
   const sortBtn = useRef(null);
@@ -24,6 +24,9 @@ export default function FilterAndSort({ tag }) {
       sortBtn.current.style.display = 'none'; // hide
     }
     // console.log((sortBtn.current.style.display = 'block'));
+  };
+  const handleFilter = (data) => {
+    data ? setFilter(tag.filter((task) => task.tag === data)) : setFilter(tag);
   };
   return (
     <>
@@ -59,16 +62,31 @@ export default function FilterAndSort({ tag }) {
             <p className="px-4 pb-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">
               Filter by tag
             </p>
+            <button
+              onClick={() => handleFilter('')}
+              type="button"
+              className="w-full text-left px-4 py-2 hover:bg-gray-50"
+            >
+              all
+            </button>
             {tag?.length > 0 &&
-              tag.map((t) => (
-                <button
-                  key={t.id}
-                  type="button"
-                  className="w-full text-left px-4 py-2 hover:bg-gray-50"
-                >
-                  {t.tag}
-                </button>
-              ))}
+              tag
+                .reduce((acc, curr) => {
+                  if (!acc.some((item) => item.tag === curr.tag)) {
+                    acc.push(curr);
+                  }
+                  return acc;
+                }, [])
+                .map((t) => (
+                  <button
+                    onClick={() => handleFilter(t.tag)}
+                    key={t.id}
+                    type="button"
+                    className="w-full text-left px-4 py-2 hover:bg-gray-50"
+                  >
+                    {t.tag}
+                  </button>
+                ))}
           </div>
         </div>
 

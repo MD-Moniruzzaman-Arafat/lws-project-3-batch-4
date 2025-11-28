@@ -34,7 +34,7 @@ export default function AddTaskForm({ onClose }) {
         <div className="grid grid-cols-1 gap-6">
           <div>
             <label
-              for="title"
+              htmlFor="title"
               className="block text-sm font-medium text-gray-700"
             >
               Task Title
@@ -53,7 +53,7 @@ export default function AddTaskForm({ onClose }) {
 
           <div>
             <label
-              for="description"
+              htmlFor="description"
               className="block text-sm font-medium text-gray-700"
             >
               Task Subtitle / Description
@@ -73,7 +73,7 @@ export default function AddTaskForm({ onClose }) {
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <div>
             <label
-              for="tag"
+              htmlFor="tag"
               className="block text-sm font-medium text-gray-700"
             >
               Tag
@@ -99,7 +99,7 @@ export default function AddTaskForm({ onClose }) {
 
           <div>
             <label
-              for="date"
+              htmlFor="date"
               className="block text-sm font-medium text-gray-700"
             >
               Due Date
@@ -117,7 +117,7 @@ export default function AddTaskForm({ onClose }) {
 
           <div>
             <label
-              for="status"
+              htmlFor="status"
               className="block text-sm font-medium text-gray-700"
             >
               Status

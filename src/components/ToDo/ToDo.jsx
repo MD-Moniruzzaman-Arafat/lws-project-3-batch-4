@@ -1,15 +1,9 @@
-import { useMemo } from 'react';
-import useTask from '../../hooks/useTask';
+import { useState } from 'react';
 import Card from '../common/Card';
 import FilterAndSort from '../common/FilterAndSort';
 
-export default function ToDo() {
-  const { state } = useTask();
-  const todo = useMemo(() => {
-    return state.tasks.filter((task) => task.status === 'todo');
-  }, [state.tasks]);
-
-  console.log('ToDo Tasks:', todo);
+export default function ToDo({ tasks }) {
+  const [filter, setFilter] = useState([]);
   return (
     <>
       <div className="flex-1 flex flex-col min-w-0 w-full">
@@ -17,18 +11,18 @@ export default function ToDo() {
           <div className="flex items-center gap-3">
             <h2 className="text-lg font-semibold text-gray-900">To-do</h2>
             <span className="text-sm font-medium text-gray-500 bg-gray-100 px-2.5 py-1 rounded-full">
-              {todo.length}
+              {tasks.length}
             </span>
           </div>
 
-          <FilterAndSort tag={todo} />
+          <FilterAndSort tag={tasks} setFilter={setFilter} />
         </div>
 
         <div className="space-y-4 flex-1 overflow-visible lg:overflow-y-auto">
           {/* Card Start */}
-          {todo.map((task) => (
-            <Card key={task.id} task={task} />
-          ))}
+          {filter.length > 0
+            ? filter.map((task) => <Card key={task.id} task={task} />)
+            : tasks.map((task) => <Card key={task.id} task={task} />)}
         </div>
       </div>
     </>
